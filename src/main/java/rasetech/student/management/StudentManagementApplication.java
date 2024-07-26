@@ -19,35 +19,17 @@ public class StudentManagementApplication {
   @Autowired
   private StudentRepository repository;
 
-  private Map<String, String> student;
-
   public static void main(String[] args) {
     SpringApplication.run(StudentManagementApplication.class, args);
   }
 
   @GetMapping("/student")
-  public String getStudent(@RequestParam String name) {
-    Student student = repository.searchByName(name);
-    return student.getName() + " " + student.getAge() + "歳";
+  public List<Student> getStudentList() {
+    return repository.search();
   }
 
-  @GetMapping("/students")
-  public List<Student> getAllStudents() {
-    return repository.getAllStudents();//新しいメソッド
-  }
-
-  @PostMapping("/student")
-  public void registerStudent(@RequestParam String name, @RequestParam int age) {
-    repository.registerStudent(name, age);
-  }
-
-  @PatchMapping("/student")
-  public void updateStudent(String name, int age) {
-    repository.updateStudent(name, age);
-  }
-
-  @DeleteMapping("/student")
-  public void deleteStudent(String name) {
-    repository.deleteStudent(name);
+  @GetMapping("/student_coursesList")
+  public List<StudentCourses> getStudentCoursesList() {
+    return repository.searchStudentCourses();
   }
 }

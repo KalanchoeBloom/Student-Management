@@ -9,18 +9,8 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface StudentRepository {
-@Select("SELECT * FROM student WHERE name = #{name}")
-  Student searchByName(String name);
-
-@Insert("INSERT INTO student values(#{name}, #{age})")
-  void registerStudent(String name, int age);
-
-@Update("UPDATE student SET age = #{age} WHERE name = #{name}")
-  void updateStudent(String name,int age);
-
-@Delete("DELETE FROM student WHERE name = #{name}")
-  void deleteStudent(String name);
-
-@Select("SELECT name, age FROM student")
-  List<Student> getAllStudents(); // 新しいメソッド
+@Select("SELECT * FROM students")
+  List<Student> search();
+@Select("SELECT * FROM student_courses")
+  List<StudentCourses> searchStudentCourses();
 }

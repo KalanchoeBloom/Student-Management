@@ -1,23 +1,17 @@
 package rasetech.student.management;
 
+import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
+@Getter
+@Setter
 public class Student {
-
- private String name;
+ private String student_id;
+ private String full_name;
+ private String furigana;
+ private String nickName;
+ private String email;
+ private String region;
  private int age;
-
- public String getName() {
-  return name;
- }
-
- public void setName(String name) {
-  this.name = name;
- }
-
- public int getAge() {
-  return age;
- }
-
- public void setAge(int age) {
-  this.age = age;
- }
+ private String gender;
 }
