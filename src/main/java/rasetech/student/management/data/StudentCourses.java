@@ -1,4 +1,4 @@
-package rasetech.student.management;
+package rasetech.student.management.data;
 
 import java.time.LocalDateTime;
 import lombok.Getter;
