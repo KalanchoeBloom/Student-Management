@@ -13,4 +13,7 @@ public class StudentCourses {
   private String courses;
   private LocalDateTime start_date;
   private LocalDateTime end_date;
+
+  public String getCourseName() {
+  return courses;}
 }

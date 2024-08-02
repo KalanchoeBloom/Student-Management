@@ -28,4 +28,14 @@ public class StudentController {
   public List<StudentCourses> getStudentCoursesList() {
     return service.searchStudentCoursesList();
   }
+
+  @GetMapping("/filterStudents")  // 新しいエンドポイントを追加
+  public List<Student> filterStudents() {
+    return service.searchStudentList();
+  }
+
+  @GetMapping("/filteredCourses")  // 新しいエンドポイントを追加
+  public List<StudentCourses> getFilteredCourses() {
+    return service.searchStudentCoursesList();
+  }
 }

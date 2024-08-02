@@ -15,4 +15,8 @@ public class Student {
   private String region;
   private int age;
   private String gender;
+
+  public int getAge() {
+    return age;//値を返す }
+  }
 }

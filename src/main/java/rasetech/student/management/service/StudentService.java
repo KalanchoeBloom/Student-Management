@@ -1,6 +1,7 @@
 package rasetech.student.management.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rasetech.student.management.data.Student;
@@ -19,17 +20,25 @@ public class StudentService {
 
   public List<Student> searchStudentList() {
     //検索処理
-    repository.search();
-
+    List<Student> allStudents = repository.search();
     //絞り込みをする。年齢が３０代の人のみを抽出する。
-    //抽出したリストをコントローラーに渡す。(サービスだけ変更)
+    List<Student> filteredStudents = allStudents.stream()
+        .filter(student -> student.getAge() >= 30 && student.getAge() < 40)
+        .collect(Collectors.toList());
 
-    return repository.search();
+    //抽出したリストをコントローラーに渡す。(サービスだけ変更)
+    return filteredStudents;
   }
 
   public List<StudentCourses> searchStudentCoursesList() {
     //絞り込み検索で「Javaコース」のコース検索のみを抽出する。
+    List<StudentCourses> allStudentCourses = repository.searchStudentCourses();
+
+    List<StudentCourses> filteredCourses = allStudentCourses.stream()
+        .filter(course -> "javaコース".equalsIgnoreCase(course.getCourseName()))
+        .collect(Collectors.toList());
+
     //抽出したリストをコントローラーに返す。
-    return repository.searchStudentCourses();
+    return filteredCourses;
   }
 }
