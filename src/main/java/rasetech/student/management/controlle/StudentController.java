@@ -32,9 +32,7 @@ public class StudentController {
 
       List<StudentCourses> convertStudentCourses = new ArrayList<>();
       for (StudentCourses studentCourse : studentCourses) {
-        // Nullチェックを追加してから equals を呼び出す
-        if (student.getStudentId() != null && student.getStudentId()
-            .equals(studentCourse.getStudentsId())) {
+        if(student.getStudentId().equals(studentCourse.getStudentsId())){
           convertStudentCourses.add(studentCourse);
         }
       }
