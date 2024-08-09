@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rasetech.student.management.data.Student;
 import rasetech.student.management.data.StudentCourses;
+import rasetech.student.management.data.Students;
 import rasetech.student.management.repository.StudentRepository;
 
 @Service
@@ -18,11 +18,11 @@ public class StudentService {
     this.repository = repository;
   }
 
-  public List<Student> searchStudentList() {
+  public List<Students> searchStudentList() {
     //検索処理
-    List<Student> allStudents = repository.search();
+    List<Students> allStudents = repository.search();
     //絞り込みをする。年齢が３０代の人のみを抽出する。
-    List<Student> filteredStudents = allStudents.stream()
+    List<Students> filteredStudents = allStudents.stream()
         .filter(student -> student.getAge() >= 30 && student.getAge() < 40)
         .collect(Collectors.toList());
 
@@ -30,7 +30,7 @@ public class StudentService {
     return filteredStudents;
   }
 
-  public List<StudentCourses> searchStudentCoursesList() {
+  public List<StudentCourses> searchstudentcourseslist() {
     //絞り込み検索で「Javaコース」のコース検索のみを抽出する。
     List<StudentCourses> allStudentCourses = repository.searchStudentCourses();
 

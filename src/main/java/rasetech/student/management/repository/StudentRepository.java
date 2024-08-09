@@ -3,8 +3,8 @@ package rasetech.student.management.repository;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import rasetech.student.management.data.Student;
 import rasetech.student.management.data.StudentCourses;
+import rasetech.student.management.data.Students;
 
 /**
  * 受講生情報を扱うリポジトリ。
@@ -20,7 +20,7 @@ public interface StudentRepository {
    * @return 全件検索した受講生情報の一覧
    */
   @Select("SELECT * FROM students")
-  List<Student> search();
+  List<Students> search();
 
   @Select("SELECT * FROM student_courses")
   List<StudentCourses> searchStudentCourses();

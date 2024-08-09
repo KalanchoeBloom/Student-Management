@@ -5,10 +5,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Student {
+public class Students {
 
-  private String student_id;
-  private String full_name;
+  private String studentId;
+  private String fullName;
   private String furigana;
   private String nickName;
   private String email;
@@ -16,7 +16,12 @@ public class Student {
   private int age;
   private String gender;
 
+
+  public String getStudentId() {
+    return studentId;
+  }
+
   public int getAge() {
-    return age;//値を返す }
+    return age;
   }
 }
