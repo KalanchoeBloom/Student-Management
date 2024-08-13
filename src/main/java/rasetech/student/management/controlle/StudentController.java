@@ -1,10 +1,11 @@
 package rasetech.student.management.controlle;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import rasetech.student.management.controlle.converter.StudentConverter;
 import rasetech.student.management.data.StudentCourses;
 import rasetech.student.management.data.Students;
 import rasetech.student.management.domain.StudentDetail;
@@ -14,10 +15,12 @@ import rasetech.student.management.service.StudentService;
 public class StudentController {
 
   private StudentService service;
+  private StudentConverter converter;
 
   @Autowired
-  public StudentController(StudentService service) {
+  public StudentController(StudentService service, StudentConverter converter) {
     this.service = service;
+    this.converter = converter;
   }
 
   @GetMapping("/studentList")
@@ -25,35 +28,22 @@ public class StudentController {
     List<Students> students = service.searchStudentList();
     List<StudentCourses> studentCourses = service.searchstudentcourseslist();
 
-    List<StudentDetail> studentDetails = new ArrayList<>();
-    for (Students student : students) {
-      StudentDetail studentDetail = new StudentDetail();
-      studentDetail.setStudent(student);
-
-      List<StudentCourses> convertStudentCourses = new ArrayList<>();
-      for (StudentCourses studentCourse : studentCourses) {
-        if(student.getStudentId().equals(studentCourse.getStudentsId())){
-          convertStudentCourses.add(studentCourse);
-        }
-      }
-      studentDetail.setStudentsCourses(convertStudentCourses);
-      studentDetails.add(studentDetail);
-    }
-    return studentDetails;
+    return converter.convertStudentDetails(
+        students, studentCourses);
   }
 
   @GetMapping("/student_coursesList")
   public List<StudentCourses> getStudentCoursesList() {
     return service.searchstudentcourseslist();
   }
-
-  @GetMapping("/filterStudents")
-  public List<Students> filterStudents() {
-    return service.searchStudentList();
-  }
-
-  @GetMapping("/filteredCourses")
-  public List<StudentCourses> getFilteredCourses() {
-    return service.searchstudentcourseslist();
-  }
+//
+//  @GetMapping("/filterStudents")
+//  public List<Students> filterStudents() {
+//    return service.searchStudentList();
+//  }
+//
+//  @GetMapping("/filteredCourses")
+//  public List<StudentCourses> getFilteredCourses() {
+//    return service.searchstudentcourseslist();
+//  }
 }

@@ -15,6 +15,8 @@ public class Students {
   private String region;
   private int age;
   private String gender;
+  private String remark;
+  private boolean isDeleted;
 
 
   public String getStudentId() {

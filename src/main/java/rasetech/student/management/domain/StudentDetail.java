@@ -14,8 +14,9 @@ public class StudentDetail {
   private List<StudentCourses> studentCourses;
 
   public void setStudent(Students student) {
+    this.students=student;
   }
-
   public void setStudentsCourses(List<StudentCourses> convertStudentCourses) {
+    this.studentCourses=convertStudentCourses;
   }
 }
