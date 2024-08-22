@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">//
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
   <title>受講生一覧</title>
 </head>
 <body>
 <h1>受講生一覧</h1>
-  <table border="1">
-    <thead>
-    <tr>
-    <th>ID</th>
+<table border="1">
+  <thead>
+   <tr>
+      <th>ID</th>
       <th>フルネーム</th>
       <th>ふりがな</th>
       <th>ニックネーム</th>
@@ -17,21 +17,21 @@
       <th>性別</th>
       <th>年齢</th>
       <th>備考</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:eath="studentDetail : ${studentList}">
-    <td th:text="${studentDetail.student.id}">1</td>
-      <td th:text="${studentDetail.student.id}">田中由美</td>
-      <td th:text="${studentDetail.student.id}">たなかゆみ</td>
-      <td th:text="${studentDetail.student.id}">ユミ</td>
-      <td th:text="${studentDetail.student.id}">1111@gmail.com</td>
-      <td th:text="${studentDetail.student.id}">東京都</td>
-      <td th:text="${studentDetail.student.id}">女</td>
-      <td th:text="${studentDetail.student.id}">19</td>
-      <td th:text="${studentDetail.student.id}">特になし</td>
-    </tr>
-    </tbody>
-  </table>
+   </tr>
+  </thead>
+  <tbody>
+  <tr th:each="studentDetail : ${studentList}">
+    <td th:text="${studentDetail.student.studentId}">1</td>
+    <td th:text="${studentDetail.student.fullName}">田中由美</td>
+    <td th:text="${studentDetail.student.furigana}">たなかゆみ</td>
+    <td th:text="${studentDetail.student.nickName}">ユミ</td>
+    <td th:text="${studentDetail.student.email}">1111@gmai.com</td>
+    <td th:text="${studentDetail.student.region}">東京都</td>
+    <td th:text="${studentDetail.student.gender}">女</td>
+    <td th:text="${studentDetail.student.age}">19</td>
+    <td th:text="${studentDetail.student.remark}">特になし</td>
+  </tr>
+  </tbody>
+</table>
 </body>
 </html>

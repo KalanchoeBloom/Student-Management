@@ -1,17 +1,20 @@
 package rasetech.student.management.controlle;
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import rasetech.student.management.controlle.converter.StudentConverter;
-import rasetech.student.management.data.StudentCourses;
 import rasetech.student.management.data.Students;
+import rasetech.student.management.data.StudentCourses;
 import rasetech.student.management.domain.StudentDetail;
 import rasetech.student.management.service.StudentService;
 
-@RestController
+@Controller
 public class StudentController {
 
   private StudentService service;
@@ -24,26 +27,36 @@ public class StudentController {
   }
 
   @GetMapping("/studentList")
-  public List<StudentDetail> getStudentList() {
+  public String getStudentList(Model model) {
     List<Students> students = service.searchStudentList();
-    List<StudentCourses> studentCourses = service.searchstudentcourseslist();
+    List<StudentCourses> studentCourses = service.searchStudentcourseslist();
 
-    return converter.convertStudentDetails(
-        students, studentCourses);
+    model.addAttribute("studentList", converter.convertStudentDetails(
+        students, studentCourses));
+    return "studentList";
   }
 
   @GetMapping("/student_coursesList")
   public List<StudentCourses> getStudentCoursesList() {
-    return service.searchstudentcourseslist();
+    return service.searchStudentcourseslist();
   }
-//
-//  @GetMapping("/filterStudents")
-//  public List<Students> filterStudents() {
-//    return service.searchStudentList();
-//  }
-//
-//  @GetMapping("/filteredCourses")
-//  public List<StudentCourses> getFilteredCourses() {
-//    return service.searchstudentcourseslist();
-//  }
+
+  @GetMapping("/newStudent")
+  public String newStudent(Model model) {
+    model.addAttribute("studentDetail", new StudentDetail());
+    return "registerStudent";
+  }
+
+  @PostMapping("/registerStudent")
+  public String registerStudent(@ModelAttribute StudentDetail studentDetail, BindingResult result) {
+    if (result.hasErrors()) {
+      return "registerStudent";
+    }
+    //①新規受講生登録をとうろくする処理を実装する
+    service.registerStudent(studentDetail);
+    //②コース情報も一緒に登録できるように実装する。コースは単体で良い。
+    System.out.println(
+        studentDetail.getStudent().getName() + "さんが新規受講生として登録されました。");
+    return "redirect:/studentList";
+  }
 }

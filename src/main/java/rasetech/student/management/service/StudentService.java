@@ -3,10 +3,11 @@ package rasetech.student.management.service;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import rasetech.student.management.data.StudentCourses;
 import rasetech.student.management.data.Students;
+import rasetech.student.management.domain.StudentDetail;
 import rasetech.student.management.repository.StudentRepository;
 
 @Service
@@ -32,7 +33,7 @@ public class StudentService {
     return repository.search();
   }
 
-  public List<StudentCourses> searchstudentcourseslist() {
+  public List<StudentCourses> searchStudentcourseslist() {
     //絞り込み検索で「Javaコース」のコース検索のみを抽出する。
     List<StudentCourses> allStudentCourses = repository.searchStudentCourses();
 
@@ -42,5 +43,11 @@ public class StudentService {
 
     //抽出したリストをコントローラーに返す。
     return filteredCourses;
+  }
+
+  @Transactional
+  public void registerStudent(StudentDetail studentDetail) {
+    repository.registerStudent(studentDetail.getStudent());
+    //TODO:コース情報登録も行う。
   }
 }

@@ -18,6 +18,9 @@ public class Students {
   private String remark;
   private boolean isDeleted;
 
+  public String getName() {
+    return fullName;
+  }
 
   public String getStudentId() {
     return studentId;
@@ -27,3 +30,4 @@ public class Students {
     return age;
   }
 }
+
