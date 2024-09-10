@@ -33,15 +33,6 @@ public class StudentService {
     studentDetail.setStudentCourses(studentsCourses);
     return studentDetail;
   }//画面に入ってきたId情報を紐づける
-  public List<StudentCourses> searchStudentCourseslist(String studentId) {
-    List<StudentCourses> allStudentCourses = repository.searchStudentsCourses(studentId);
-
-    List<StudentCourses> filteredCourses = allStudentCourses.stream()
-        .filter(course -> "javaコース".equalsIgnoreCase(course.getCourses()))
-        .collect(Collectors.toList());
-
-    return filteredCourses;
-  }
 
   @Transactional
   public void registerStudent(StudentDetail studentDetail) {
@@ -49,6 +40,7 @@ public class StudentService {
     //TODO:コース情報登録も行う。
     for (StudentCourses studentCourses : studentDetail.getStudentCourses()) {
       studentCourses.setStudentsId(studentDetail.getStudent().getStudentId());
+
       studentCourses.setStartDate(LocalDateTime.now());
       studentCourses.setEndDate(LocalDateTime.now().plusYears(1));
       repository.registerStudentCourses(studentCourses);
@@ -56,14 +48,13 @@ public class StudentService {
       //IDと紐付ける
     }
   }
+
   @Transactional
   public void updateStudent(StudentDetail studentDetail) {
     repository.updateStudent(studentDetail.getStudent());
-    //TODO:コース情報登録も行う。
     for (StudentCourses studentCourses : studentDetail.getStudentCourses()) {
+      studentCourses.setStudentsId(studentDetail.getStudent().getStudentId());
       repository.updateStudentCourses(studentCourses);
-      //更新　StudentCourseに入っているID情報のみ更新
-
     }
   }
 }

@@ -43,8 +43,8 @@ public class StudentController {
 
   //ID指定で情報をとる
   @GetMapping("/student/{StudentId}")
-  public String getStudent(@PathVariable String studentId, Model model) {
-    StudentDetail studentDetail = service.searchStudent(studentId);
+  public String getStudent(@PathVariable String StudentId, Model model) {
+    StudentDetail studentDetail = service.searchStudent(StudentId);
     model.addAttribute("studentDetail", studentDetail);
     return "updateStudent";
   }
@@ -83,4 +83,4 @@ public class StudentController {
         studentDetail.getStudent().getName() + "さんが新規受講生として登録されました。");
     return "redirect:/studentList";
   }
-}
+  }
