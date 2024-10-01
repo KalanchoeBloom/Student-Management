@@ -1,21 +1,31 @@
 package rasetech.student.management.data;
 
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
-@Getter
-@Setter
 public class Students {
-
+@NotBlank
+@Pattern(regexp = "\\d+S")//数値のみ
   private String studentId;
+  @NotBlank
   private String fullName;
+  @NotBlank
   private String furigana;
+  @NotBlank
   private String nickName;
+  @NotBlank
+  @Email
   private String email;
+  @NotBlank
   private String region;
+  @NotBlank
   private int age;
+  @NotBlank
   private String gender;
+  @NotBlank
   private String remark;
+  @NotBlank
   private boolean isDeleted;
 
   // Getter and Setter methods

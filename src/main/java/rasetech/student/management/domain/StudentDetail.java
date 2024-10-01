@@ -1,19 +1,20 @@
 package rasetech.student.management.domain;
 
+import jakarta.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
-//import lombok.Getter;
-//import lombok.Setter;
+
+import lombok.AllArgsConstructor;
 import rasetech.student.management.data.Students;
-import rasetech.student.management.data.StudentCourses;
+import rasetech.student.management.data.StudentCourse;
 
-//@Getter
-//@Setter
-
+@AllArgsConstructor
+@Valid
 public class StudentDetail {
 
   private Students student;
-  private List<StudentCourses> studentCourses;
+
+  private List<StudentCourse> studentCourses;
 
   public StudentDetail() {
     this.student = new Students();
@@ -28,11 +29,11 @@ public class StudentDetail {
     this.student = student;
   }
 
-  public List<StudentCourses> getStudentCourses() {
+  public List<StudentCourse> getStudentCourses() {
     return studentCourses;
   }
 
-  public void setStudentCourses(List<StudentCourses> studentCourses) {
+  public void setStudentCourses(List<StudentCourse> studentCourses) {
     this.studentCourses = studentCourses;
   }
 }

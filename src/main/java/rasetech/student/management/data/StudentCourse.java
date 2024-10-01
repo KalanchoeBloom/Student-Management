@@ -1,15 +1,11 @@
 package rasetech.student.management.data;
 
 import java.time.LocalDateTime;
-//import lombok.Getter;
-//import lombok.Setter;
 
-//@Getter
-//@Setter
-public class StudentCourses {
+public class StudentCourse {
 
-  private String studentId;//コースID
-  private String studentsId;
+  private String studentId;//受講コースID
+  private String studentsId;//学生に紐付けられたコースの外部キー
   private String courses;
   private LocalDateTime start_date;
   private LocalDateTime end_date;
