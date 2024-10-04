@@ -34,7 +34,7 @@ public interface StudentRepository {
    *
    * @return　受講生のコース情報（全件）
    */
-  @Select("SELECT * FROM student_courses")
+
   List<StudentCourse> searchStudentsCoursesList();
 
   /**
@@ -44,7 +44,7 @@ public interface StudentRepository {
    * @return　受講生IDに紐づく受講生コース情報
    */
   //特定の学生IDに紐づくコース情報を検索するメソッド
-  @Select("SELECT * FROM student_courses  WHERE studentsId = #{studentsId}")
+
   List<StudentCourse> searchStudentsCourses(String studentsId);
 
   /**
@@ -52,9 +52,7 @@ public interface StudentRepository {
    * @param student　受講生
    */
   // 受講生情報の登録
-  @Insert(
-      "INSERT INTO students(fullName,furigana,nickName,email,region,age,gender,remark,isDeleted)"
-          + "VALUES(#{fullName},#{furigana},#{nickName},#{email},#{region},#{age},#{gender},#{remark},false)")
+
   @Options(useGeneratedKeys = true, keyProperty = "studentId")
   void registerStudent(Students student);
   /**
@@ -63,8 +61,7 @@ public interface StudentRepository {
    * @param studentsCourses　受講生コース情報
    */
   // コース情報の登録
-  @Insert("Insert INTO student_courses(studentsId,courses,start_date,end_date)"
-      + "VALUES(#{studentsId},#{courses},#{start_date},#{end_date})")
+
   @Options(useGeneratedKeys = true, keyProperty = "studentId")
   void registerStudentCourses(StudentCourse studentsCourses);
 
@@ -74,17 +71,7 @@ public interface StudentRepository {
    * @param student　受講生
    */
 
-  @Update("UPDATE students "
-      + "SET fullName = #{fullName}, "
-      + "furigana = #{furigana}, "
-      + "nickName = #{nickName}, "
-      + "email = #{email}, "
-      + "region = #{region}, "
-      + "age = #{age}, "
-      + "gender = #{gender}, "
-      + "remark = #{remark}, "
-      + "isDeleted = #{isDeleted} "
-      + "WHERE studentId = #{studentId}")
+
   void updateStudent(Students student);
 
   /**
@@ -92,9 +79,7 @@ public interface StudentRepository {
    *
    * @param studentsCourses　受講生コース情報
    */
-  @Update("UPDATE student_courses "
-      + "SET courses = #{courses} "
-      + "WHERE studentsId =#{studentsId}")
+
   void updateStudentCourses(StudentCourse studentsCourses);
 }
 
