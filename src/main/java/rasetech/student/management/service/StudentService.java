@@ -46,7 +46,7 @@ public class StudentService {
   public StudentDetail searchStudent(String studentId) {
     Students student = repository.searchStudent(studentId);
     List<StudentCourse> studentsCourses = repository.searchStudentsCourses(student.getStudentId());
-    return new StudentDetail();
+    return new StudentDetail(student,studentsCourses);
 //    return new StudentDetail(student, studentsCourses);
   }//画面に入ってきたId情報を紐づける
 
@@ -93,6 +93,8 @@ public class StudentService {
     for (StudentCourse studentCourses : studentDetail.getStudentCourses()) {
       studentCourses.setStudentsId(studentDetail.getStudent().getStudentId());
       repository.updateStudentCourses(studentCourses);
+      
     }
+
   }
 }

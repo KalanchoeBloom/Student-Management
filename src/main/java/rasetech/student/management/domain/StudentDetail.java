@@ -1,5 +1,6 @@
 package rasetech.student.management.domain;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import lombok.AllArgsConstructor;
 import rasetech.student.management.data.Students;
 import rasetech.student.management.data.StudentCourse;
 
+@Schema(description = "受講生詳細")
 @AllArgsConstructor
 @Valid
 public class StudentDetail {
