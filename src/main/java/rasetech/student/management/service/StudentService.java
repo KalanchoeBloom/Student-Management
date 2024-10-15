@@ -46,7 +46,7 @@ public class StudentService {
   public StudentDetail searchStudent(String studentId) {
     Students student = repository.searchStudent(studentId);
     List<StudentCourse> studentsCourses = repository.searchStudentsCourses(student.getStudentId());
-    return new StudentDetail(student,studentsCourses);
+    return new StudentDetail(student, studentsCourses);
 //    return new StudentDetail(student, studentsCourses);
   }//画面に入ってきたId情報を紐づける
 
@@ -83,7 +83,7 @@ public class StudentService {
   }
 
   /**
-   *受講生詳細の更新を行います。受講生の情報と受講生コース情報をそれぞれ更新します
+   * 受講生詳細の更新を行います。受講生の情報と受講生コース情報をそれぞれ更新します
    *
    * @param studentDetail
    */
@@ -93,7 +93,7 @@ public class StudentService {
     for (StudentCourse studentCourses : studentDetail.getStudentCourses()) {
       studentCourses.setStudentsId(studentDetail.getStudent().getStudentId());
       repository.updateStudentCourses(studentCourses);
-      
+
     }
 
   }

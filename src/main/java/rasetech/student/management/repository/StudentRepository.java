@@ -21,10 +21,11 @@ public interface StudentRepository {
    * @return　受講生一覧（全件）
    */
   List<Students> search();
+
   /**
    * 受講生の検索を行ないます
    *
-   * @param studentId　受講生ID
+   * @param studentId 　受講生ID
    * @return　受講生
    */
   Students searchStudent(String studentId);
@@ -40,7 +41,7 @@ public interface StudentRepository {
   /**
    * 受講生IDに紐づく受講生コース情報を検索します
    *
-   * @param studentsId　受講生ID
+   * @param studentsId 　受講生ID
    * @return　受講生IDに紐づく受講生コース情報
    */
   //特定の学生IDに紐づくコース情報を検索するメソッド
@@ -49,26 +50,26 @@ public interface StudentRepository {
 
   /**
    * 受講生を新規登録する。IDに関しては自動採番を行なう
-   * @param student　受講生
+   *
+   * @param student 　受講生
    */
   // 受講生情報の登録
-
   @Options(useGeneratedKeys = true, keyProperty = "studentId")
   void registerStudent(Students student);
+
   /**
    * 受講生コース情報を新規登録します。IDに関しては自動採番を行なう
    *
-   * @param studentsCourses　受講生コース情報
+   * @param studentsCourses 　受講生コース情報
    */
   // コース情報の登録
-
   @Options(useGeneratedKeys = true, keyProperty = "studentId")
   void registerStudentCourses(StudentCourse studentsCourses);
 
   /**
    * 受講生を更新します。
    *
-   * @param student　受講生
+   * @param student 　受講生
    */
 
 
@@ -77,9 +78,9 @@ public interface StudentRepository {
   /**
    * 受講生コース情報のコース名を更新します。
    *
-   * @param studentsCourses　受講生コース情報
+   * @param studentsCourses 　受講生コース情報
    */
 
   void updateStudentCourses(StudentCourse studentsCourses);
 }
-//<!-- 10/4 39回目22演習課題提出 -->
+

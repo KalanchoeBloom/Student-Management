@@ -41,10 +41,10 @@ public class StudentController {
    *
    * @return　受講生一覧（全件）
    */
-  @Operation(summary = "一覧検索",description = "受講生の一覧を検索します。")
+  @Operation(summary = "一覧検索", description = "受講生の一覧を検索します。")
   @GetMapping("/studentList")
   public List<StudentDetail> getStudentList() throws TestException {
-   return service.searchStudentList();
+    return service.searchStudentList();
   }
 
   /**
@@ -53,7 +53,7 @@ public class StudentController {
    * @param StudentId 　受講生ID
    * @return　受講生
    */
-  @Operation(summary = "受講生検索",description = "受講生の情報を検索します")
+  @Operation(summary = "受講生検索", description = "受講生の情報を検索します")
   @GetMapping("/student/{StudentId}")
   public StudentDetail getStudent(
       @PathVariable @NotBlank @Pattern(regexp = "^\\d+$") String StudentId) {
@@ -63,10 +63,10 @@ public class StudentController {
   /**
    * 受講生の登録を行います。
    *
-   * @param studentDetail　受講生詳細
-   * @return 実行結果　
+   * @param studentDetail 　受講生詳細
+   * @return 実行結果
    */
-  @Operation(summary = "受講生登録",description = "受講生を登録します")
+  @Operation(summary = "受講生登録", description = "受講生を登録します")
   @PostMapping("/registerStudent")
   public ResponseEntity<StudentDetail> registerStudent(
       @RequestBody @Valid StudentDetail studentDetail) {
@@ -75,13 +75,12 @@ public class StudentController {
   }
 
   /**
-   * 受講生詳細の更新を行います
-   * キャンセルフラグの更新もここで行います。（論理削除）
+   * 受講生詳細の更新を行います キャンセルフラグの更新もここで行います。（論理削除）
    *
-   * @param studentDetail　受講生詳細
+   * @param studentDetail 　受講生詳細
    * @return　実行結果
    */
-  @Operation(summary = "受講生更新",description = "受講生情報を更新します")
+  @Operation(summary = "受講生更新", description = "受講生情報を更新します")
   @PutMapping("/updateStudent")
   public ResponseEntity<String> updateStudent(@RequestBody @Valid StudentDetail studentDetail) {
     service.updateStudent(studentDetail);
