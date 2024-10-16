@@ -1,17 +1,27 @@
 package rasetech.student.management.domain;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
-import lombok.Getter;
-import lombok.Setter;
-import rasetech.student.management.data.Students;
-import rasetech.student.management.data.StudentCourses;
 
-@Getter
-@Setter
+import lombok.AllArgsConstructor;
+import rasetech.student.management.data.Students;
+import rasetech.student.management.data.StudentCourse;
+
+@Schema(description = "受講生詳細")
+@AllArgsConstructor
+@Valid
 public class StudentDetail {
 
   private Students student;
-  private List<StudentCourses> studentCourses;
+
+  private List<StudentCourse> studentCourses;
+
+  public StudentDetail() {
+    this.student = new Students();
+    this.studentCourses = new ArrayList<>();
+  }
 
   public Students getStudent() {
     return student;
@@ -21,7 +31,12 @@ public class StudentDetail {
     this.student = student;
   }
 
-  public void setStudentCourses(List<StudentCourses> convertStudentCourses) {
-    this.studentCourses = convertStudentCourses;
+  public List<StudentCourse> getStudentCourses() {
+    return studentCourses;
+  }
+
+  public void setStudentCourses(List<StudentCourse> studentCourses) {
+    this.studentCourses = studentCourses;
   }
 }
+

@@ -27,9 +27,16 @@ java {
 		implementation 'org.springframework.boot:spring-boot-starter-web'
 		//Thymeleaf
 		implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+		// Validation
+		implementation 'org.springframework.boot:spring-boot-starter-validation'
 		// Apache Commons Lang
 		implementation 'org.apache.commons:commons-lang3:3.14.0'
-// Lombok
+
+		//OpenAPI Generator
+		implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
+
+
+		// Lombok
 		compileOnly 'org.projectlombok:lombok'
 		annotationProcessor 'org.projectlombok:lombok'
 		//MySQLドライバ
@@ -39,6 +46,7 @@ java {
 		implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
 
 		providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+		//テストを自動で作るもの
 		testImplementation 'org.springframework.boot:spring-boot-starter-test'
 		testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	}
