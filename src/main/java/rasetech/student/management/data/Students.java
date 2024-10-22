@@ -2,12 +2,13 @@ package rasetech.student.management.data;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 @Schema(description = "受講生")
 public class Students {
 @NotBlank
-@Pattern(regexp = "^\\d+$")//数値のみ
+@Pattern(regexp = "^\\d+$",message = "数字のみ入力するようにしてください。")//数値のみ
   private String studentId;
   @NotBlank
   private String fullName;
@@ -20,13 +21,13 @@ public class Students {
   private String email;
   @NotBlank
   private String region;
-  @NotBlank
+  @Min(1)
   private int age;
   @NotBlank
   private String gender;
   @NotBlank
   private String remark;
-  @NotBlank
+
   private boolean isDeleted;
 
   // Getter and Setter methods

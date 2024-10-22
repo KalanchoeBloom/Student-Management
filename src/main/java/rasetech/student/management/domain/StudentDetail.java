@@ -15,7 +15,6 @@ import rasetech.student.management.data.StudentCourse;
 public class StudentDetail {
 
   private Students student;
-
   private List<StudentCourse> studentCourses;
 
   public StudentDetail() {
