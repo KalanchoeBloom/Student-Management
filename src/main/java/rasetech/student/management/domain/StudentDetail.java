@@ -11,9 +11,9 @@ import rasetech.student.management.data.StudentCourse;
 
 @Schema(description = "受講生詳細")
 @AllArgsConstructor
-@Valid
-public class StudentDetail {
 
+public class StudentDetail {
+  @Valid
   private Students student;
   private List<StudentCourse> studentCourses;
 

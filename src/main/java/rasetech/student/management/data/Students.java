@@ -5,10 +5,12 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+
 @Schema(description = "受講生")
 public class Students {
-@NotBlank
-@Pattern(regexp = "^\\d+$",message = "数字のみ入力するようにしてください。")//数値のみ
+
+  @NotBlank
+  @Pattern(regexp = "^\\d+$", message = "数字のみ入力するようにしてください。")//数値のみ
   private String studentId;
   @NotBlank
   private String fullName;
