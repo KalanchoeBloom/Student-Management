@@ -6,6 +6,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
@@ -67,6 +68,9 @@ class StudentServiceTest {
     //検証
     verify(repository, times(1)).searchStudent(studentId);
     verify(repository, times(1)).searchStudentsCourses(studentId);
+//    Assertions.assertEquals(expected.getStudent().getStudentId(),
+//        acctual.getStudents().getStudentId());
+
   }
 
   @Test
@@ -109,5 +113,19 @@ class StudentServiceTest {
     // 各コースの studentsId が正しく設定されているかも確認
     assertEquals("80", course1.getStudentsId());
     assertEquals("80", course2.getStudentsId());
+  }
+
+  @Test
+  void 受講性詳細の登録＿初期化処理が行なわれること() {
+    Students student = new Students();  // 生徒のダミーデータ
+    student.setStudentId("80");
+    student.setFullName("Goro");
+    StudentCourse studentCourse = new StudentCourse();
+
+    sut.initStudentsCourse(studentCourse, student);
+
+    assertEquals("80", studentCourse.getStudentId());
+    assertEquals(LocalDateTime.now().getHour(), studentCourse.getStart_date().getHour());
+    assertEquals(LocalDateTime.now().plusYears(1).getYear(), studentCourse.getEnd_date().getYear());
   }
 }
