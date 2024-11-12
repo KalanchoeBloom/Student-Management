@@ -5,27 +5,27 @@ import java.time.LocalDateTime;
 @Schema(description = "受講生コース情報")
 public class StudentCourse {
 
-  private String studentId;//受講コースID
-  private String studentsId;//学生に紐付けられたコースの外部キー
+  private String id;//受講コースID
+  private String studentId;//学生に紐付けられたコースの外部キー
   private String courses;
   private LocalDateTime start_date;
   private LocalDateTime end_date;
 
   // Getter と　Setterの追加
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String studentsId) {
+    this.id = studentsId;
+  }
+
   public String getStudentId() {
     return studentId;
   }
 
-  public void setStudentId(String studentsId) {
-    this.studentId = studentsId;
-  }
-
-  public String getStudentsId() {
-    return studentsId;
-  }
-
-  public void setStudentsId(String studentsId) {
-    this.studentsId = studentsId;
+  public void setStudentId(String studentId) {
+    this.studentId = studentId;
   }
 
   public String getCourses() {
