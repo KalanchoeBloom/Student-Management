@@ -32,7 +32,7 @@ public class Students {
 
   private boolean isDeleted;
 
-  // Getter and Setter methods
+
   public String getStudentId() {
     return studentId;
   }
