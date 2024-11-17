@@ -59,29 +59,30 @@ class StudentControllerTest {
   @Test
   void 受講生詳細の登録が実行できて空で返ってくること() throws Exception {
     mockMvc.perform(post("/registerStudent")
-        .contentType(MediaType.APPLICATION_JSON)
-        .content("""
-                  {
-                     "student": {
-                     "fullName": "田中　由美",
-                     "furigana": "たなか　ゆみ",
-                     "nickName": "ユミ",
-                     "email": "1111@gmei.com",
-                     "region": "東京都",
-                     "age": 19,
-                     "gender": "女",
-                     "remark": ""
-                      },
-                     "studentCourses": [
-                      {
-                       "courses": "javaコース"
-                                 }
-                               ]
-                             }
+            .contentType(MediaType.APPLICATION_JSON)
+            .content("""
+                {
+                   "student": {
+                       "studentId": "1",
+                       "fullName": "田中　由美",
+                       "furigana": "たなか　ゆみ",
+                       "nickName": "ユミ",
+                       "email": "1111@gmei.com",
+                       "region": "東京都",
+                       "age": 19,
+                       "gender": "女",
+                       "remark": ""
+                   },
+                   "studentCourses": [
+                       {
+                           "courses": "javaコース"
+                       }
+                   ]
+                }
                 """))
         .andExpect(status().isOk());  // ステータス200を期待
 
-// サービスメソッドが1回呼ばれているか検証
+    // サービスメソッドが1回呼ばれているか検証
     verify(service, times(1)).registerStudent(any());
   }
 
@@ -93,6 +94,7 @@ class StudentControllerTest {
             """
                 {
                      "student": {
+                      "studentId": "1",
                        "fullName": "田中　由美",
                        "furigana": "たなか　ゆみ",
                        "nickName": "ユミ",
@@ -116,13 +118,13 @@ class StudentControllerTest {
         )).andExpect(status().isOk());  // ステータス200を期待
 
 // サービスメソッドが1回呼ばれているか検証
-    verify(service, times(1)).registerStudent(any());
+    verify(service, times(1)).updateStudent(any());
   }
 
   @Test
   void 受講生詳細の例外APIが実行できてステータスが400返ってくること() throws Exception {
-    mockMvc.perform(get("/exceptioin"))
-        .andExpect(status().is4xxClientError())
+    mockMvc.perform(get("/exception"))
+        .andExpect(status().isBadRequest()) // 400を明示的に指定
         .andExpect(content().string("このAPIは現在利用できません。古いURLとなっています。"));
   }
 

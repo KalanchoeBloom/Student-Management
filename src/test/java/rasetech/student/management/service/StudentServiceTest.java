@@ -123,7 +123,7 @@ class StudentServiceTest {
     sut.initStudentsCourse(studentCourse, student);
 
     assertEquals("80", studentCourse.getId());
-    assertEquals(LocalDateTime.now().getHour(), studentCourse.getStart_date().getHour());
-    assertEquals(LocalDateTime.now().plusYears(1).getYear(), studentCourse.getEnd_date().getYear());
+    assertEquals(LocalDateTime.now().getHour(), studentCourse.getStartDate().getHour());
+    assertEquals(LocalDateTime.now().plusYears(1).getYear(), studentCourse.getEndDate().getYear());
   }
 }
