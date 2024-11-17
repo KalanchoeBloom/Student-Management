@@ -68,8 +68,7 @@ public class StudentController {
    */
   @Operation(summary = "受講生登録", description = "受講生を登録します")
   @PostMapping("/registerStudent")
-  public ResponseEntity<StudentDetail> registerStudent(
-      @RequestBody @Valid StudentDetail studentDetail) {
+  public ResponseEntity<StudentDetail> registerStudent(@RequestBody @Valid StudentDetail studentDetail) {
     StudentDetail responseStudentDetail = service.registerStudent(studentDetail);
     return ResponseEntity.ok(responseStudentDetail);
   }
