@@ -85,4 +85,8 @@ public class StudentController {
     service.updateStudent(studentDetail);
     return ResponseEntity.ok("更新処理が成功しました！");
   }
+  @GetMapping("/exception")
+  public void throwException() throws TestException {
+    throw new TestException("このAPIは現在利用できません。古いURLとなっています。");
+  }
 }

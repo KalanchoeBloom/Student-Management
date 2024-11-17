@@ -9,10 +9,10 @@ import rasetech.student.management.exception.TestException;
 @ControllerAdvice//コントローラー全体に対して例外処理が可能になります
 public class GlobalExceptionHandler {
 
-  // TestException 用のハンドラー
+  // TestException というエラーが起きた場合の処理
   @ExceptionHandler(TestException.class)
   public ResponseEntity<String> handleTestException(TestException ex) {
-    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("TestException: " + ex.getMessage());
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
   }
 
   // 他の一般的な例外もキャッチ可能

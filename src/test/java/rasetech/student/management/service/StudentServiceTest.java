@@ -4,12 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -111,8 +109,8 @@ class StudentServiceTest {
     verify(repository, times(1)).updateStudentCourses(course1);
     verify(repository, times(1)).updateStudentCourses(course2);
     // 各コースの studentsId が正しく設定されているかも確認
-    assertEquals("80", course1.getStudentsId());
-    assertEquals("80", course2.getStudentsId());
+    assertEquals("80", course1.getStudentId());
+    assertEquals("80", course2.getStudentId());
   }
 
   @Test
@@ -124,8 +122,8 @@ class StudentServiceTest {
 
     sut.initStudentsCourse(studentCourse, student);
 
-    assertEquals("80", studentCourse.getStudentId());
-    assertEquals(LocalDateTime.now().getHour(), studentCourse.getStart_date().getHour());
-    assertEquals(LocalDateTime.now().plusYears(1).getYear(), studentCourse.getEnd_date().getYear());
+    assertEquals("80", studentCourse.getId());
+    assertEquals(LocalDateTime.now().getHour(), studentCourse.getStartDate().getHour());
+    assertEquals(LocalDateTime.now().plusYears(1).getYear(), studentCourse.getEndDate().getYear());
   }
 }
