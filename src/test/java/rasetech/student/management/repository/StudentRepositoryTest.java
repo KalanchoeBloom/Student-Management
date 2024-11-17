@@ -102,26 +102,26 @@ class StudentRepositoryTest {
     assertThat(actual).isNotNull(); // データが存在することを確認
     assertThat(actual.get(0).getStudentId()).isEqualTo(studentId); // 取得したデータの受講生IDが一致することを確認
   }
-//  @Test
-//  void 受講生コース情報のコース名が更新できること() {
-//    StudentCourse course = new StudentCourse();
-//    course.setStudentId("1");
-//    course.setCourses("Java入門");
-//    course.setStartDate(LocalDateTime.of(2024, 1, 1, 0, 0));
-//    course.setEndDate(LocalDateTime.of(2024, 6, 30, 23, 59));
-//
-//    sut.registerStudentCourses(course); // まず新規登録
-//
-//    // コース名を更新
-//    course.setCourses("Java応用");
-//    sut.updateStudentCourses(course);
-//
-//    List<StudentCourse> actual = sut.searchStudentsCourses("1");
-//
-//    // 更新後のコース情報が正しく取得できることを確認
-//    assertThat(actual).isNotNull();
-//    assertThat(actual.stream().anyMatch(c -> c.getCourses().equals("Java応用"))).isTrue();
-//  }
+  @Test
+  void 受講生コース情報のコース名が更新できること() {
+    StudentCourse course = new StudentCourse();
+    course.setStudentId("1");
+    course.setCourses("Java入門");
+    course.setStartDate(LocalDateTime.of(2024, 1, 1, 0, 0));
+    course.setEndDate(LocalDateTime.of(2024, 6, 30, 23, 59));
+
+    sut.registerStudentCourses(course); // まず新規登録
+
+    // コース名を更新
+    course.setCourses("Java応用");
+    sut.updateStudentCourses(course);
+
+    List<StudentCourse> actual = sut.searchStudentsCourses("1");
+
+    // 更新後のコース情報が正しく取得できることを確認
+    assertThat(actual).isNotNull();
+    assertThat(actual.stream().anyMatch(c -> c.getCourses().equals("Java応用"))).isTrue();
+  }
 //  @Test
 //  void 受講生コース情報が新規登録できること() {
 //    StudentCourse course = new StudentCourse();
