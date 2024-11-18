@@ -26,7 +26,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import rasetech.student.management.data.Students;
 import rasetech.student.management.service.StudentService;
 
-@Nested
+//@Nested消去
 @WebMvcTest
 class StudentControllerTest {
 
