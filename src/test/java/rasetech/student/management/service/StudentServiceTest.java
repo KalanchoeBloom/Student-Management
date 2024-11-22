@@ -122,8 +122,14 @@ class StudentServiceTest {
 
     sut.initStudentsCourse(studentCourse, student);
 
+    // デバッグ用に値を確認
+    System.out.println("StudentCourse ID: " + studentCourse.getId());
+    System.out.println("StartDate: " + studentCourse.getStartDate());
+    System.out.println("EndDate: " + studentCourse.getEndDate());
+
+
     assertEquals("80", studentCourse.getId());
-    assertEquals(LocalDateTime.now().getHour(), studentCourse.getStart_date().getHour());
-    assertEquals(LocalDateTime.now().plusYears(1).getYear(), studentCourse.getEnd_date().getYear());
+    assertEquals(LocalDateTime.now().getHour(), studentCourse.getStartDate().getHour());
+    assertEquals(LocalDateTime.now().plusYears(1).getYear(), studentCourse.getEndDate().getYear());
   }
 }

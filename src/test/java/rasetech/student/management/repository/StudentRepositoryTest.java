@@ -2,7 +2,6 @@ package rasetech.student.management.repository;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -102,6 +101,7 @@ class StudentRepositoryTest {
     assertThat(actual).isNotNull(); // データが存在することを確認
     assertThat(actual.get(0).getStudentId()).isEqualTo(studentId); // 取得したデータの受講生IDが一致することを確認
   }
+
   @Test
   void 受講生コース情報のコース名が更新できること() {
     StudentCourse course = new StudentCourse();
@@ -122,22 +122,23 @@ class StudentRepositoryTest {
     assertThat(actual).isNotNull();
     assertThat(actual.stream().anyMatch(c -> c.getCourses().equals("Java応用"))).isTrue();
   }
-//  @Test
-//  void 受講生コース情報が新規登録できること() {
-//    StudentCourse course = new StudentCourse();
-//    course.setStudentId("1"); // 既存の受講生ID
-//    course.setCourses("javaコース");
-//    course.setStartDate(LocalDateTime.of(2024, 1, 1, 0, 0));
-//    course.setEndDate(LocalDateTime.of(2024, 6, 30, 23, 59));
-//
-//    sut.registerStudentCourses(course); // 新規登録
-//
-//    List<StudentCourse> actual = sut.searchStudentsCourses("1");
-//
-//    // 新規登録されたコース情報が正しく取得できることを確認
-//    assertThat(actual).isNotNull();
-//    assertThat(actual.stream().anyMatch(c -> c.getCourses().equals("javaコース"))).isTrue();
-//  }
+
+  @Test
+  void 受講生コース情報が新規登録できること() {
+    StudentCourse course = new StudentCourse();
+    course.setStudentId("1"); // 既存の受講生ID
+    course.setCourses("javaコース");
+    course.setStartDate(LocalDateTime.of(2024, 1, 1, 0, 0));
+    course.setEndDate(LocalDateTime.of(2024, 6, 30, 23, 59));
+
+    sut.registerStudentCourses(course); // 新規登録
+
+    List<StudentCourse> actual = sut.searchStudentsCourses("1");
+
+    // 新規登録されたコース情報が正しく取得できることを確認
+    assertThat(actual).isNotNull();
+    assertThat(actual.stream().anyMatch(c -> c.getCourses().equals("javaコース"))).isTrue();
+  }
 
 }
 
