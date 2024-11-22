@@ -16,7 +16,10 @@
   <select id="searchStudentsCourses" resultType="rasetech.student.management.data.StudentCourse">
     SELECT * FROM student_courses WHERE studentId = #{studentId}
   </select>
-
+  <!-- 受講生コース情報の全件検索 -->
+  <select id="searchStudentsCoursesList" resultType="rasetech.student.management.data.StudentCourse">
+    SELECT * FROM student_courses
+  </select>
   <!-- 受講生の登録 -->
   <insert id="registerStudent" keyProperty="studentId" useGeneratedKeys="true">
     INSERT INTO students (fullName, furigana, nickName, email, region, age, gender, remark,
