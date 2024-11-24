@@ -1,13 +1,13 @@
 -- data.sql
-INSERT INTO students (fullName, furigana, nickname, email, region, age, gender)
+INSERT INTO students (fullName, furigana, nickname, email, region, age, gender,remark, isDeleted)
 VALUES
-('田中 由美', 'たなか ゆみ', 'ユミ', '1111@gmei.com', '東京都', 19, '女性'),
-('加藤 拓海', 'かとう たくみ', 'タク', '2222@gmei.com', '東京都', 20, '男性'),
-('伊藤 真由', 'いとう まゆ', 'マユ', '3333@gmei.com', '東京都', 21, '女性'),
-('山口 桜', 'やまぐち さくら', 'サクラ', '4444@gmei.com', '東京都', 22, '女性'),
-('高橋 陽介', 'たかはし ようすけ', 'ヨウ', '5555@gmei.com', '東京都', 23, '男性');
+('田中 由美', 'たなか ゆみ', 'ユミ', '1111@gmei.com', '東京都', 19, '女性', NULL, 0),
+('加藤 拓海', 'かとう たくみ', 'タク', '2222@gmei.com', '東京都', 20, '男性', NULL, 0),
+('伊藤 真由', 'いとう まゆ', 'マユ', '3333@gmei.com', '東京都', 21, '女性', NULL, 0),
+('山口 桜', 'やまぐち さくら', 'サクラ', '4444@gmei.com', '東京都', 22, '女性', NULL, 0),
+('高橋 陽介', 'たかはし ようすけ', 'ヨウ', '5555@gmei.com', '東京都', 23, '男性', NULL, 0);
 
-INSERT INTO student_courses(studentsId, courses, start_date, end_date)
+INSERT INTO student_courses(studentId, courses, start_date, end_date)
 VALUES
 (1,'javaコース','2024-02-25 00:00:00', '2025-04-05 00:00:00'),
 (2,'webデザインコース','2024-06-25 00:00:00', '2025-06-05 00:00:00'),

@@ -60,11 +60,11 @@ class StudentRepositoryTest {
     student.setDeleted(false);
 
     sut.registerStudent(student);//新しい学生を登録
-//更新処理
+    //更新処理
     student.setFullName("吉田太郎"); // 名前を変更
     student.setAge(21); // 年齢を変更
     sut.updateStudent(student); // 更新処理
-// 更新された受講生を再度取得
+    // 更新された受講生を再度取得
     Students updatedStudent = sut.searchStudent(student.getStudentId());
 
     // 更新された内容が反映されているか確認

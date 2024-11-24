@@ -18,7 +18,7 @@ public class StudentCourse {
   }
 
   public void setId(String id) {
-    this.id = id; ;
+    this.id = id;
   }
 
   public String getStudentId() {

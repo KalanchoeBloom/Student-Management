@@ -59,7 +59,7 @@ class StudentConverterTest {
     assertThat(actual.get(0).getStudentCourses()).isEmpty(); // 紐づかない情報は除外されることを確認
   }
 
-  private static Students createStudent() {
+  private Students createStudent() {
     Students student = new Students();
     student.setStudentId("1");
     student.setFullName("吉田智美");
