@@ -15,8 +15,8 @@ CREATE TABLE IF NOT EXISTS students
 
 CREATE TABLE IF NOT EXISTS student_courses
 (
-   studentId INT AUTO_INCREMENT PRIMARY KEY,
-   studentsId  varchar(255) DEFAULT NULL,
+   id INT AUTO_INCREMENT PRIMARY KEY,
+   studentId  varchar(255) DEFAULT NULL,
    courses VARCHAR(20) NOT NULL,
    start_date TIMESTAMP,
    end_date TIMESTAMP
