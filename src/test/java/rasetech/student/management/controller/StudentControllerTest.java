@@ -15,8 +15,6 @@ import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import java.util.Set;
-import java.util.concurrent.locks.StampedLock;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -26,7 +24,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import rasetech.student.management.data.Students;
 import rasetech.student.management.service.StudentService;
 
-@Nested
 @WebMvcTest
 class StudentControllerTest {
 

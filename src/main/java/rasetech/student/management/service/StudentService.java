@@ -76,7 +76,7 @@ public class StudentService {
    * @param student        　受講生
    */
   void initStudentsCourse(StudentCourse studentCourses, Students student) {
-    studentCourses.setStudentsId(student.getStudentId());
+    studentCourses.setStudentId(student.getStudentId());
     LocalDateTime now = LocalDateTime.now();
     studentCourses.setStartDate(now);
     studentCourses.setEndDate(now.plusYears(1));
@@ -91,7 +91,7 @@ public class StudentService {
   public void updateStudent(StudentDetail studentDetail) {
     repository.updateStudent(studentDetail.getStudent());
     for (StudentCourse studentCourses : studentDetail.getStudentCourses()) {
-      studentCourses.setStudentsId(studentDetail.getStudent().getStudentId());
+      studentCourses.setStudentId(studentDetail.getStudent().getStudentId());
       repository.updateStudentCourses(studentCourses);
 
     }

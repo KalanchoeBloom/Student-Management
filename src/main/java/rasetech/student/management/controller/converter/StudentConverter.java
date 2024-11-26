@@ -30,7 +30,7 @@ public class StudentConverter {
       studentDetail.setStudent(student);//studentsテーブルから一人ずつ取得
 
       List<StudentCourse> convertStudentCourses = studentCourses.stream()
-          .filter(studentCourse -> student.getStudentId().equals(studentCourse.getStudentsId()))
+          .filter(studentCourse -> student.getStudentId().equals(studentCourse.getStudentId()))
           .collect(Collectors.toList());//courseから一致した人を取得
 
       studentDetail.setStudentCourses(convertStudentCourses);

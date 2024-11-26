@@ -4,13 +4,11 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
-
-import lombok.AllArgsConstructor;
 import rasetech.student.management.data.Students;
 import rasetech.student.management.data.StudentCourse;
 
 @Schema(description = "受講生詳細")
-@AllArgsConstructor
+
 
 public class StudentDetail {
   @Valid
@@ -35,6 +33,11 @@ public class StudentDetail {
   }
 
   public void setStudentCourses(List<StudentCourse> studentCourses) {
+    this.studentCourses = studentCourses;
+  }
+  // Students と List<StudentCourse> を受け取るコンストラクタ
+  public StudentDetail(Students student, List<StudentCourse> studentCourses) {
+    this.student = student;
     this.studentCourses = studentCourses;
   }
 }
